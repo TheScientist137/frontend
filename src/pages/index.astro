@@ -1,16 +1,27 @@
 ---
-
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { undefined } from "astro:schema";
+const posts = await getCollection('posts');
+const sortedPosts = posts.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
+console.log(sortedPosts);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Home">
+	<section>
+		<h1 class="font-mono">Welcome to my blog</h1>
+		{posts.map(post => (
+			<article class="my-4">
+				<a href="">
+				<h2>{post.data.title}</h2>
+				<time datetime={post.data.createdAt.toISOString()}>
+					{post.data.createdAt.toLocaleDateString("us-us", {
+						year: "numeric",
+						month: "short",
+						day: "numeric"
+					})}
+				</time>
+				</a>
+			</article>
+		))}
+	</section>
