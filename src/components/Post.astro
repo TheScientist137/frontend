@@ -1,0 +1,17 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+type Props = {
+  title: string,
+  createdAt: Date
+}
+
+const { title, createdAt } = Astro.props;
+---
+
+<article class="my-4">
+  <a href="">
+  <h2>{title}</h2>
+  <FormattedDate date={createdAt}  />
+  </a>
+</article>
