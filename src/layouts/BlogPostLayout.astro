@@ -1,0 +1,14 @@
+---
+import MainLayout from "./MainLayout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+const { title, createdAt } = Astro.props;
+---
+
+<MainLayout title={title}>
+ <div class="prose">
+  <h1>{title}</h1>
+  <slot />
+ </div>
+ <FormattedDate date={createdAt} />
+</MainLayout>

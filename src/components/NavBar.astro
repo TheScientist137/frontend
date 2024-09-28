@@ -1,0 +1,24 @@
+---
+import DarkMode from "@/components/DarkMode.astro";
+
+const isLoggedIn = false;
+---
+
+<nav class="flex gap-6">
+ <DarkMode />
+ <a href="/blog">Blog</a>
+ <a href="/about">About</a>
+ {
+  isLoggedIn ? (
+   <>
+    <a href="/create-post">Create Post</a>
+    <a href="/logout">Logout</a>
+   </>
+  ) : (
+   <>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+   </>
+  )
+ }
+</nav>

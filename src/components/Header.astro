@@ -1,0 +1,14 @@
+---
+import NavBar from "./NavBar.astro";
+
+type Props = {
+ showNav?: boolean;
+};
+
+const { showNav } = Astro.props;
+---
+
+<header class="flex justify-between p-8 bg-slate-200">
+ <div><a href="/">Astronomy Blog</a></div>
+ {showNav &&  <NavBar />}
+</header>

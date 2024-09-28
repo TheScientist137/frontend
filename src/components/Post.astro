@@ -1,17 +1,18 @@
 ---
-import FormattedDate from './FormattedDate.astro';
+import FormattedDate from "./FormattedDate.astro";
 
 type Props = {
-  title: string,
-  createdAt: Date
-}
+  title: string;
+  createdAt: Date;
+  slug: string;
+};
 
-const { title, createdAt } = Astro.props;
+const { title, createdAt, slug } = Astro.props;
 ---
 
-<article class="my-4">
-  <a href="">
-  <h2>{title}</h2>
-  <FormattedDate date={createdAt}  />
-  </a>
-</article>
+<a href={slug}>
+  <div class="px-2 border-b-2">
+    <h2>{title}</h2>
+    <FormattedDate date={createdAt} />
+  </div>
+</a>

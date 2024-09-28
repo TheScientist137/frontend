@@ -1,0 +1,19 @@
+---
+import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+ const posts = await getCollection("posts");
+ return posts.map(post => ({ params: { slug: post.slug }, props: post }));
+}) satisfies GetStaticPaths;
+
+// Necesitamos el objeto global para poder acceder al método .render()
+const post = Astro.props;
+
+const { Content } = await post.render()
+---
+
+<BlogPostLayout {...post.data}>
+ <Content />
+</BlogPostLayout>
