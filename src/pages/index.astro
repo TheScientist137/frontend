@@ -4,10 +4,7 @@ import Post from "@/components/Post.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
-const sortedPosts = posts.sort(
-	(a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf(),
-);
-console.log(sortedPosts);
+posts.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
 ---
 
 <MainLayout title="Home">
