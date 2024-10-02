@@ -1,35 +1,61 @@
 ---
 type Props = {
- title: string;
- authName: string;
-};
+  title: string;
+  authName: string;
+  handleSubmit: (e: SubmitEvent) => void;
+}
 
-const { title, authName } = Astro.props;
-
-// Implementar logica de envio de formulario con javascript
+const { title, authName, handleSubmit } = Astro.props;
 ---
 
-<div class="h-full flex flex-col justify-around text-center bg-slate-200 rounded-lg py-12">
- <h2 class="text-xl">{title}</h2>
+<div
+  class="h-full flex flex-col justify-around text-center bg-slate-200 rounded-lg py-12"
+>
+  <h2 class="text-xl">{title}</h2>
 
- <form class="flex flex-col gap-4">
-  <div class="px-8">
-   <label for="name">Username</label><br>
-   <input type="text" id="name" name="name" placeholder="Username" required class="p-1 rounded-lg border-2 border-slate-300"/>
-  </div>
+  <form onsubmit={handleSubmit} class="flex flex-col gap-4">
+    <div class="px-8">
+      <label for="name">Username</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Username"
+        required
+        class="p-1 rounded-lg border-2 border-slate-300"
+      />
+    </div>
 
-  <div class="px-8">
-   <label for="email">Email</label><br>
-   <input type="email" id="email" name="email" placeholder="Email" required class="p-1 rounded-lg border-2 border-slate-300" />
-  </div>
+    <div class="px-8">
+      <label for="email">Email</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+        class="p-1 rounded-lg border-2 border-slate-300"
+      />
+    </div>
 
-  <div class="px-8">
-   <label for="password">Password</label><br>
-   <input type="password" id="password" name="password" placeholder="Password" required class="p-1 rounded-lg border-2 border-slate-300" />
-  </div>
+    <div class="px-8">
+      <label for="password">Password</label><br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+        class="p-1 rounded-lg border-2 border-slate-300"
+      />
+    </div>
 
-  <button type="submit" class="mx-16 py-2 border-2 rounded-lg bg-slate-300 hover:bg-slate-400 active:bg-slate-300">{authName}</button>
- </form>
+    <button
+      type="submit"
+      class="mx-16 py-2 border-2 rounded-lg bg-slate-300 hover:bg-slate-400 active:bg-slate-300"
+      >{authName}</button
+    >
+  </form>
 
- <a href="/" class="hover:underline">Back</a>
+  <a href="/" class="hover:underline">Back</a>
 </div>

@@ -1,8 +1,9 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import FormComponent from "@/components/FormComponent.astro";
+import { handleSignup } from "@/services/register";
 ---
 
 <MainLayout title="Sign Up" showNav={false}>
- <FormComponent title="Create Account" authName="Sign Up" />
+ <FormComponent title="Create Account" authName="Sign Up" handleSubmit={handleSignup} />
 </MainLayout>
